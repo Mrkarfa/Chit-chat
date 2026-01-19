@@ -1,0 +1,641 @@
+[
+  {
+    "id": "TC001",
+    "title": "User Registration with Email Verification",
+    "description": "Verify that a new user can register with valid email, username, password, age confirmation, and terms acceptance, and receive a verification email.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to signup page"
+      },
+      {
+        "type": "action",
+        "description": "Input valid email, username, password, confirm age, accept terms"
+      },
+      {
+        "type": "action",
+        "description": "Submit registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify success message about verification email sent"
+      },
+      {
+        "type": "action",
+        "description": "Check email inbox for verification email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify email contains valid verification link"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "User Registration Validation Errors",
+    "description": "Verify that the registration form enforces validation and displays appropriate error messages for invalid input.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to signup page"
+      },
+      {
+        "type": "action",
+        "description": "Submit empty form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify required field validation errors are shown"
+      },
+      {
+        "type": "action",
+        "description": "Input invalid email format and weak password"
+      },
+      {
+        "type": "action",
+        "description": "Submit registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error messages for invalid email and password strength"
+      },
+      {
+        "type": "action",
+        "description": "Deselect age confirmation or terms acceptance"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify validation prevents submission and informs user"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Email Verification Callback Handling",
+    "description": "Verify that clicking the verification link updates user session and profile accordingly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Receive verification email and click verification link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is redirected to verification success page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user session is updated to verified"
+      },
+      {
+        "type": "action",
+        "description": "Attempt login with verified user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify login succeeds without verification warnings"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "User Login Success",
+    "description": "Verify that a registered and verified user can log in with valid email and password.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login page"
+      },
+      {
+        "type": "action",
+        "description": "Input valid registered email and correct password"
+      },
+      {
+        "type": "action",
+        "description": "Click login button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is logged in and directed to main chat interface"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "User Login Failure with Incorrect Credentials",
+    "description": "Verify that login fails and error message is displayed when incorrect email or password is provided.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login page"
+      },
+      {
+        "type": "action",
+        "description": "Input registered email with incorrect password"
+      },
+      {
+        "type": "action",
+        "description": "Click login button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error message indicating invalid credentials is shown"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Password Reset Request and Completion",
+    "description": "Verify that a user can request a password reset email and successfully set a new password via the reset link.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to password reset request page"
+      },
+      {
+        "type": "action",
+        "description": "Input registered email address"
+      },
+      {
+        "type": "action",
+        "description": "Submit password reset request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify success message indicating reset email sent"
+      },
+      {
+        "type": "action",
+        "description": "Check email inbox for password reset email"
+      },
+      {
+        "type": "action",
+        "description": "Click password reset link in email"
+      },
+      {
+        "type": "action",
+        "description": "Input and confirm new password"
+      },
+      {
+        "type": "action",
+        "description": "Submit new password"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify password successfully updated and user can log in with new password"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Persistent One-to-One Chat - Sending and Receiving Messages",
+    "description": "Verify that users can search contacts, open existing or new chat conversations, send messages, and receive real-time updates including read receipts and typing indicators.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Log in with a valid user account"
+      },
+      {
+        "type": "action",
+        "description": "Search for an existing contact by username or email"
+      },
+      {
+        "type": "action",
+        "description": "Open an existing one-to-one chat or start a new conversation"
+      },
+      {
+        "type": "action",
+        "description": "Send a text message"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify message appears immediately in chat with correct timestamp"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recipient receives message within 500ms and typing indicator is shown during typing"
+      },
+      {
+        "type": "action",
+        "description": "Recipient sends reply message"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify read receipts update when messages are read"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Persistent Chat Message History and Pagination",
+    "description": "Verify that message history loads correctly with scrolling and pagination, showing messages in correct chronological order.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open a one-to-one chat with an extensive message history"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify initial message batch loaded is as per design"
+      },
+      {
+        "type": "action",
+        "description": "Scroll up to load older messages"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify older messages load and display without duplication or gaps"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify messages are shown in correct chronological order from oldest to newest"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Anonymous Random Chat - Matching and Temporary Usernames",
+    "description": "Verify that users joining the random chat queue are matched anonymously within 10 seconds with temporary usernames assigned and messaging is ephemeral.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Log in and navigate to random chat mode"
+      },
+      {
+        "type": "action",
+        "description": "Enter random chat queue"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is assigned a temporary username for the session"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is matched with another anonymous user within 10 seconds"
+      },
+      {
+        "type": "action",
+        "description": "Send messages in random chat"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify messages are received in real-time but are ephemeral and removed after session ends"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Anonymous Random Chat - Skip and Leave Controls",
+    "description": "Verify that users in anonymous random chat can use skip and leave options to end or skip the current conversation appropriately.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Enter random anonymous chat"
+      },
+      {
+        "type": "action",
+        "description": "Use skip control to leave current conversation and match with next user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify previous conversation ends and new anonymous username assigned for the next match"
+      },
+      {
+        "type": "action",
+        "description": "Use leave control to exit random chat mode"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is removed from queue and session terminated"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "User Profile Management - Viewing, Editing, and Account Deletion",
+    "description": "Verify that users can view their profile details, edit allowed fields, and delete their account with data anonymization.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Log in and navigate to user settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify current profile details are displayed correctly"
+      },
+      {
+        "type": "action",
+        "description": "Edit profile fields such as display name or status"
+      },
+      {
+        "type": "action",
+        "description": "Save changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify changes are persisted and reflected in application"
+      },
+      {
+        "type": "action",
+        "description": "Initiate account deletion"
+      },
+      {
+        "type": "action",
+        "description": "Confirm deletion with required warnings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user data is anonymized and account no longer accessible"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to log in with deleted account credentials"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify login fails with appropriate message"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Search Functionality - User Search and Conversation Initiation",
+    "description": "Verify the search functionality to find users by username/email and start new conversations from search results.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to new chat search page"
+      },
+      {
+        "type": "action",
+        "description": "Input valid partial and full search terms"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify search returns matching users accurately with relevant details"
+      },
+      {
+        "type": "action",
+        "description": "Select a user from search results"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a chat conversation is created or opened with that user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user cannot start chat with themselves"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Contact Blocking and Muting Effects",
+    "description": "Verify that blocking a user prevents all communications and removes them from search and matching, and muting a user prevents notifications without blocking messages.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Block a contact from chat or profile"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify blocked user cannot send or receive messages with blocker"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify blocked user does not appear in search results or random matching for blocker"
+      },
+      {
+        "type": "action",
+        "description": "Mute a non-blocked contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify muted user messages are still received but notifications are not shown"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Moderation System - Profanity Filtering and Reporting",
+    "description": "Verify that the automated profanity filter blocks inappropriate content and that users can manually report abusive behavior with contextual data submitted to moderation queue.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt sending messages with profane or banned words"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify messages are blocked or sanitized before sending in both persistent and random chats"
+      },
+      {
+        "type": "action",
+        "description": "Trigger repeated violations"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify automatic temporary restrictions are applied per policy"
+      },
+      {
+        "type": "action",
+        "description": "Use report feature to report abusive user with context in a conversation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify report submission succeeds and includes contextual information"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Browser Push and In-App Notifications Respecting Preferences",
+    "description": "Verify that users receive browser push and in-app notifications for new messages, reports, and system alerts according to their configurable preferences.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Log in and navigate to notification settings"
+      },
+      {
+        "type": "action",
+        "description": "Toggle various notification preferences on and off"
+      },
+      {
+        "type": "action",
+        "description": "Trigger events that generate notifications (e.g. new messages, reports)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify notifications are shown or suppressed per user settings"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify notifications are actionable and redirect to appropriate context on click"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Appearance and Privacy Settings - Theme and Status Visibility",
+    "description": "Verify that users can toggle appearance themes and configure online status visibility and random chat opt-out, with immediate and persistent effect.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to appearance and privacy settings"
+      },
+      {
+        "type": "action",
+        "description": "Toggle between light and dark themes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify theme changes apply immediately throughout the app"
+      },
+      {
+        "type": "action",
+        "description": "Set online status visibility to visible and invisible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify changes reflect correctly and persist on reload"
+      },
+      {
+        "type": "action",
+        "description": "Opt-out from anonymous random chat mode"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is excluded from random chat matching"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Accessibility Compliance Verification",
+    "description": "Verify that the application meets WCAG 2.1 AA standards including keyboard navigation, screen reader support, and color contrast.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate through main application screens using only keyboard inputs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all interactive elements are reachable and operable via keyboard"
+      },
+      {
+        "type": "action",
+        "description": "Use screen reader to navigate pages and access chat functions"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify screen reader announces all elements with correct labels and states"
+      },
+      {
+        "type": "action",
+        "description": "Test color contrast ratios of UI elements"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify color contrast meets WCAG 2.1 AA minimum standards"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Performance Testing - Real-Time Messaging Latency",
+    "description": "Verify that real-time messages, including typing indicators and read receipts, are transmitted and received within 500 milliseconds under normal load.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Establish one-to-one chat session between two users"
+      },
+      {
+        "type": "action",
+        "description": "Send multiple messages sequentially from sender to receiver"
+      },
+      {
+        "type": "assertion",
+        "description": "Measure and verify message latency is less than or equal to 500ms"
+      },
+      {
+        "type": "action",
+        "description": "Type and observe typing indications on both sides"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify typing indicators update in real-time within latency threshold"
+      },
+      {
+        "type": "action",
+        "description": "Read messages on receiver side"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify read receipts update within 500ms"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Scalability - Handling High User and Message Volume",
+    "description": "Verify application stability and responsiveness when handling a large number of concurrent users and high message throughput.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Simulate environment with thousands of concurrent users in chat"
+      },
+      {
+        "type": "action",
+        "description": "Generate high volume of messages in both persistent and random chat modes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify application remains responsive and latency remains within acceptable limits"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no data loss or message order violations occur"
+      }
+    ]
+  }
+]

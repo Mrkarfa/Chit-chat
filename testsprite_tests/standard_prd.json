@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "project": "Chugli - Real-Time Chat Application",
+    "date": "2026-01-15",
+    "prepared_by": "Product Management Team"
+  },
+  "product_overview": "Chugli is a modern real-time chat web application that integrates persistent one-to-one messaging with anonymous random chat matching, combining privacy, usability, and scalability. It empowers users to connect with existing contacts or discover new strangers securely, with features like email-based authentication, media sharing, and robust moderation systems.",
+  "core_goals": [
+    "Provide a unified messaging platform combining persistent and anonymous random chat.",
+    "Ensure high performance and low latency real-time communication.",
+    "Offer a privacy-first approach with temporary identities and data minimization.",
+    "Maintain strong user safety through moderation, reporting, and abuse prevention.",
+    "Deliver a responsive and accessible user experience across devices.",
+    "Support scalability to handle large user bases and high message volumes."
+  ],
+  "key_features": [
+    "Email/password based user registration, login, email verification, and password reset.",
+    "Persistent one-to-one chats with real-time messaging, read receipts, typing indicators, message history, media sharing (images and files).",
+    "Anonymous random chat mode with temporary usernames, ephemeral sessions, and skip/leave controls.",
+    "User profile management including viewing, editing, and account deletion with data anonymization.",
+    "Robust search functionality to find users and start conversations.",
+    "Contact blocking and muting with effect on communications and visibility.",
+    "Comprehensive moderation system with automated profanity filtering and manual reporting workflows.",
+    "Browser push notifications and in-app notifications with user-configurable preferences.",
+    "Appearance and privacy settings including theme toggling, online status visibility, and random chat opt-out.",
+    "Optimized UX supporting accessibility standards (WCAG 2.1 AA), keyboard navigation, screen readers, and responsive design."
+  ],
+  "user_flow_summary": [
+    "New user onboarding: Registration with email verification, login, onboarding overlay, sending first message.",
+    "Persistent chat: Search contacts, open chat, send and receive messages with real-time updates.",
+    "Random chat: Enter random queue, receive temporary username, match anonymously, chat with skip/leave options, report/block abusive users.",
+    "Media sharing: Select and upload images or files, preview uploads, send with progress indicators, view/download shared media.",
+    "Report & block flow: Identify abusive behavior, submit report with context, block user to prevent future contact, confirmation and moderation queue processing."
+  ],
+  "validation_criteria": [
+    "Users successfully register, receive verification emails, and log in securely.",
+    "Real-time messages send and receive within 500ms latency under normal conditions.",
+    "Random chat matches users anonymously within 10 seconds with ephemeral message storage.",
+    "Profanity filter blocks inappropriate content and repeated violations trigger restrictions.",
+    "Reports are captured with context and sent to moderation queue accurately.",
+    "Media uploads complete within time limits and enforce size/type constraints.",
+    "Blocking prevents communications and removes users from search and matching.",
+    "Notifications respect user preferences and display actionable alerts.",
+    "Settings changes persist between sessions and apply immediately.",
+    "Application meets WCAG 2.1 AA accessibility standards and performs within specified load times."
+  ],
+  "code_summary": {
+    "tech_stack": [
+      "TypeScript",
+      "Next.js 16",
+      "React 19",
+      "TailwindCSS",
+      "Supabase",
+      "Zustand"
+    ],
+    "features": [
+      {
+        "name": "Landing Page",
+        "description": "Main landing page with hero section, features showcase, and navigation to login/signup",
+        "files": [
+          "src/app/page.tsx"
+        ]
+      },
+      {
+        "name": "User Authentication - Login",
+        "description": "Email/password login with Supabase Auth, form validation, and error handling",
+        "files": [
+          "src/app/login/page.tsx"
+        ]
+      },
+      {
+        "name": "User Authentication - Signup",
+        "description": "User registration with email, username, password validation, age confirmation, and terms acceptance",
+        "files": [
+          "src/app/signup/page.tsx"
+        ]
+      },
+      {
+        "name": "Email Verification",
+        "description": "Handles email verification callbacks from Supabase, updates user session and profile",
+        "files": [
+          "src/app/verify-email/page.tsx"
+        ]
+      },
+      {
+        "name": "Password Reset",
+        "description": "Password reset flow with email request and new password form",
+        "files": [
+          "src/app/reset-password/page.tsx"
+        ]
+      },
+      {
+        "name": "Chat Layout",
+        "description": "Main chat interface layout with responsive sidebar, user profile, search, and navigation",
+        "files": [
+          "src/app/chat/layout.tsx"
+        ]
+      },
+      {
+        "name": "Chat Home",
+        "description": "Default chat view showing welcome message or conversation selection prompt",
+        "files": [
+          "src/app/chat/page.tsx"
+        ]
+      },
+      {
+        "name": "New Chat",
+        "description": "Search for users and start new conversations, creates persistent chat if not existing",
+        "files": [
+          "src/app/chat/new/page.tsx"
+        ]
+      },
+      {
+        "name": "Chat Conversation",
+        "description": "Real-time messaging interface with message bubbles, read receipts, and typing indicators",
+        "files": [
+          "src/app/chat/[id]/page.tsx"
+        ]
+      },
+      {
+        "name": "Random Chat",
+        "description": "Anonymous random chat matching with temporary usernames and ephemeral messaging",
+        "files": [
+          "src/app/chat/random/page.tsx"
+        ]
+      },
+      {
+        "name": "User Settings",
+        "description": "Profile settings, appearance/theme toggle, notifications and privacy placeholders",
+        "files": [
+          "src/app/chat/settings/page.tsx"
+        ]
+      },
+      {
+        "name": "Supabase Client",
+        "description": "Browser and server-side Supabase client configuration for auth and database operations",
+        "files": [
+          "src/lib/supabase/client.ts",
+          "src/lib/supabase/server.ts",
+          "src/lib/supabase/middleware.ts"
+        ]
+      },
+      {
+        "name": "Chat State Management",
+        "description": "Zustand store for managing chat state including users, conversations, messages, and online status",
+        "files": [
+          "src/lib/stores/chat-store.ts"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "tech_stack": [
+    "TypeScript",
+    "Next.js 16",
+    "React 19",
+    "TailwindCSS",
+    "Supabase",
+    "Zustand"
+  ],
+  "features": [
+    {
+      "name": "Landing Page",
+      "description": "Main landing page with hero section, features showcase, and navigation to login/signup",
+      "files": ["src/app/page.tsx"]
+    },
+    {
+      "name": "User Authentication - Login",
+      "description": "Email/password login with Supabase Auth, form validation, and error handling",
+      "files": ["src/app/login/page.tsx"]
+    },
+    {
+      "name": "User Authentication - Signup",
+      "description": "User registration with email, username, password validation, age confirmation, and terms acceptance",
+      "files": ["src/app/signup/page.tsx"]
+    },
+    {
+      "name": "Email Verification",
+      "description": "Handles email verification callbacks from Supabase, updates user session and profile",
+      "files": ["src/app/verify-email/page.tsx"]
+    },
+    {
+      "name": "Password Reset",
+      "description": "Password reset flow with email request and new password form",
+      "files": ["src/app/reset-password/page.tsx"]
+    },
+    {
+      "name": "Chat Layout",
+      "description": "Main chat interface layout with responsive sidebar, user profile, search, and navigation",
+      "files": ["src/app/chat/layout.tsx"]
+    },
+    {
+      "name": "Chat Home",
+      "description": "Default chat view showing welcome message or conversation selection prompt",
+      "files": ["src/app/chat/page.tsx"]
+    },
+    {
+      "name": "New Chat",
+      "description": "Search for users and start new conversations, creates persistent chat if not existing",
+      "files": ["src/app/chat/new/page.tsx"]
+    },
+    {
+      "name": "Chat Conversation",
+      "description": "Real-time messaging interface with message bubbles, read receipts, and typing indicators",
+      "files": ["src/app/chat/[id]/page.tsx"]
+    },
+    {
+      "name": "Random Chat",
+      "description": "Anonymous random chat matching with temporary usernames and ephemeral messaging",
+      "files": ["src/app/chat/random/page.tsx"]
+    },
+    {
+      "name": "User Settings",
+      "description": "Profile settings, appearance/theme toggle, notifications and privacy placeholders",
+      "files": ["src/app/chat/settings/page.tsx"]
+    },
+    {
+      "name": "Supabase Client",
+      "description": "Browser and server-side Supabase client configuration for auth and database operations",
+      "files": [
+        "src/lib/supabase/client.ts",
+        "src/lib/supabase/server.ts",
+        "src/lib/supabase/middleware.ts"
+      ]
+    },
+    {
+      "name": "Chat State Management",
+      "description": "Zustand store for managing chat state including users, conversations, messages, and online status",
+      "files": ["src/lib/stores/chat-store.ts"]
+    }
+  ]
+}
